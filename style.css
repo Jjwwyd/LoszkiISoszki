@@ -1,589 +1,452 @@
 /* --- Importowanie czcionek z Google Fonts --- */
-/* Możesz tu dodać więcej czcionek, jeśli chcesz urozmaicić styl
-   np. bardziej ozdobną dla nagłówków lub "ręcznie pisaną" dla treści.
-   Dla prostoty na razie zostawiamy VT323 jako podstawę, ale można eksperymentować. */
-@import url('https://fonts.googleapis.com/css2?family=VT323&family=Fondamento&family=IM+Fell+Double+Pica&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+/* Usunięto import Creepster, ponieważ VT323 jest używana wszędzie */
 
 /* --- Generalne style dla całej strony --- */
 body {
-    font-family: 'IM Fell Double Pica', serif; /* Czcionka stylizowana na ręczne pismo */
-    background: url('https://i.imgur.com/your-wood-texture.jpg') repeat; /* Wymień na ścieżkę do tekstury drewna */
-    background-color: #3b2b1d; /* Ciemny brąz na wypadek, gdy tekstura się nie załaduje */
-    color: #e8dcb9; /* Kolor starego pergaminu/papieru */
-    line-height: 1.8;
+    font-family: 'VT323', monospace; /* Główna czcionka monospace dla całej strony */
+    background-color: #1a0a0a; /* Bardzo ciemny burgund/brąz - kolor krwi i piekła */
+    color: #e0e0e0; /* Jasny, ale nie śnieżnobiały tekst dla kontrastu */
+    line-height: 1.6;
     margin: 0;
     padding: 0;
-    overflow-x: hidden;
-    cursor: url('https://i.imgur.com/your-feather-cursor.png'), auto; /* Opcjonalny niestandardowy kursor - np. pióro */
+    overflow-x: hidden; /* Zapobiega poziomemu przewijaniu */
+    /* cursor: url('ścieżka/do/cursora.png'), auto; /* Opcjonalny niestandardowy kursor */
 }
 
 /* --- Header - nagłówek strony --- */
 header {
-    background: url('https://i.imgur.com/your-parchment-texture.jpg') repeat-x center bottom; /* Tekstura pergaminu na dole headera */
-    background-color: #5c4a3b; /* Średni brąz */
-    color: #f7e6c4; /* Złoty/jasnobeżowy */
-    padding: 25px 0;
+    background-color: #3d0000; /* Ciemniejszy, głęboki burgund */
+    color: #ff3333; /* Czerwień - krew, ogień, zagrożenie */
+    padding: 20px 0;
     text-align: center;
-    border-bottom: 5px solid #a88d6c; /* Grubszy, jasny brązowy pasek */
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6); /* Delikatny cień */
-    position: relative;
-    z-index: 10;
+    border-bottom: 3px solid #660000; /* Gruby, krwisty pasek */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.7); /* Mroczny cień */
 }
 
 header h1 {
-    font-family: 'Fondamento', cursive; /* Ozdobna czcionka fantasy */
-    font-size: 4.5em;
-    text-transform: capitalize; /* Zamiast uppercase, pierwsze litery wielkie */
-    text-shadow: 3px 3px #3b2b1d, 5px 5px #7a614e; /* Cień w stylu stempla */
-    letter-spacing: 3px;
-    margin: 0;
-    position: relative;
-    padding-bottom: 15px; /* Miejsce na ozdobną linię */
-}
-
-header h1::after {
-    content: '';
-    display: block;
-    width: 80%;
-    height: 2px;
-    background: linear-gradient(to right, transparent, #f7e6c4, transparent);
-    margin: 10px auto 0;
+    font-family: 'VT323', monospace; /* VT323 dla głównego tytułu */
+    font-size: 3.5em; /* Duży, agresywny tytuł */
+    text-transform: uppercase;
+    text-shadow: 4px 4px #000000, 6px 6px #660000; /* Cień w stylu retro */
+    letter-spacing: 5px; /* Rozstrzelone litery */
+    margin: 0; /* Usuwamy domyślne marginesy */
 }
 
 /* --- Nawigacja --- */
 nav ul {
     padding: 0;
-    list-style: none;
-    margin-top: 25px;
-    display: flex;
-    justify-content: center;
-    gap: 40px; /* Większe odstępy */
-    flex-wrap: wrap;
+    list-style: none; /* Usuwamy domyślne kropki list */
+    margin-top: 20px;
+    display: flex; /* Ustawiamy elementy obok siebie (poziomo) */
+    justify-content: center; /* Centrujemy linki na środku */
+    gap: 30px; /* Dodajemy odstęp między linkami */
+    flex-wrap: wrap; /* Pozwalamy na zawijanie się linków na mniejszych ekranach */
+}
+
+nav ul li {
+    margin: 0; /* Zerujemy marginesy, bo używamy gap */
 }
 
 nav ul li a {
-    color: #e8dcb9; /* Kolor pergaminu */
+    color: #ff6666; /* Jaśniejsza czerwień */
     text-decoration: none;
-    font-family: 'VT323', monospace; /* Pixelowa czcionka do menu */
-    font-size: 1.6em;
+    font-family: 'VT323', monospace; /* VT323 dla nawigacji */
+    font-size: 1.5em; /* Nieco większa czcionka dla lepszej widoczności */
     text-transform: uppercase;
-    padding: 12px 20px;
-    border: 2px solid #a88d6c; /* Brązowa ramka */
-    border-radius: 8px; /* Bardziej zaokrąglone */
-    background-color: rgba(92, 74, 59, 0.7); /* Półprzezroczysty brąz */
-    transition: all 0.4s ease;
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
+    padding: 10px 15px; /* Dodajemy padding dla większego obszaru kliknięcia */
+    border: 2px solid transparent; /* Przezroczysta ramka, która pojawi się na hover */
+    border-radius: 5px; /* Lekko zaokrąglone rogi, jak na ekranach terminali */
+    transition: all 0.3s ease; /* Płynne przejścia dla wszystkich właściwości */
+    text-shadow: 1px 1px #000000; /* Delikatny cień tekstu */
 }
 
 nav ul li a:hover {
-    color: #fffacd; /* Jaśniejszy beż/krem */
-    background-color: rgba(122, 97, 78, 0.9); /* Jaśniejszy brąz */
-    border-color: #f7e6c4; /* Złoty/jasnobeżowy */
-    transform: translateY(-3px) scale(1.02); /* Wyraźniejsze uniesienie i lekkie powiększenie */
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.6), 0 0 20px #f7e6c4; /* Delikatny złoty blask */
+    color: #66ff66; /* Seledynowy kolor przy najechaniu */
+    text-shadow: 0 0 10px #33cc33, 0 0 20px #33cc33; /* Seledynowy efekt "glow" */
+    background-color: rgba(70, 0, 0, 0.4); /* Lekko ciemniejsze tło przy najechaniu */
+    border-color: #66ff66; /* Seledynowa ramka przy najechaniu */
+    transform: translateY(-2px); /* Delikatne uniesienie przy najechaniu */
 }
 
+/* Styl dla aktywnego linku (opcjonalne - musiałbyś dodać klasę 'active' do bieżącego linku w HTML) */
 nav ul li a.active {
-    color: #fffacd;
-    border-color: #f7e6c4;
-    background-color: #7a614e; /* Stały, wyraźny brąz */
-    box-shadow: 0 0 18px #f7e6c4, inset 0 0 10px rgba(0,0,0,0.5);
+    color: #66ff66; /* Zawsze seledynowy dla aktywnego linku */
+    border-color: #66ff66;
+    background-color: rgba(70, 0, 0, 0.6);
+    box-shadow: 0 0 15px #66ff66;
 }
 
 /* --- Główna zawartość stron (main) --- */
 main {
-    padding: 50px 30px;
-    max-width: 1100px; /* Jeszcze szersza strona dla "tablicy" */
-    margin: 50px auto;
-    background: url('https://i.imgur.com/your-old-parchment-texture.jpg') repeat; /* Stara tekstura pergaminu */
-    background-color: #fdf5e6; /* Jasny beż na wypadek braku tekstury */
-    border: 8px solid #7a614e; /* Gruba brązowa ramka, jak drewniana tablica */
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8), inset 0 0 25px rgba(0,0,0,0.4); /* Wyraźny cień i wewnętrzny cień */
-    border-radius: 15px; /* Bardziej zaokrąglone rogi, jak stara tablica */
-    position: relative;
+    padding: 40px 20px;
+    max-width: 1000px; /* Nieco szersza strona */
+    margin: 40px auto; /* Większe marginesy pionowe */
+    background-color: rgba(20, 0, 0, 0.7); /* Lekko przezroczyste tło dla sekcji */
+    border: 2px solid #660000; /* Krwista ramka */
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.9); /* Bardzo mroczny cień */
+    border-radius: 8px; /* Lekko zaokrąglone rogi */
 }
-
-/* --- Dekoracja dla głównej ramki (main) - "gwoździe" lub "pinezki" --- */
-main::before,
-main::after {
-    content: '';
-    position: absolute;
-    width: 25px;
-    height: 25px;
-    background-color: #a88d6c; /* Kolor mosiężnego gwoździa/pinezki */
-    border: 2px solid #5c4a3b;
-    border-radius: 50%; /* Okrągły kształt */
-    box-shadow: inset 0 0 5px rgba(0,0,0,0.5), 2px 2px 5px rgba(0,0,0,0.5);
-    z-index: 1;
-}
-
-main::before {
-    top: 15px;
-    left: 15px;
-}
-
-main::after {
-    top: 15px;
-    right: 15px;
-}
-
-/* Dodatkowe "gwoździe" na dole dla symetrii */
-main::nth-of-type(2)::before {
-    bottom: 15px;
-    left: 15px;
-    top: auto; /* Reset top, aby bottom działało */
-}
-
-main::nth-of-type(2)::after {
-    bottom: 15px;
-    right: 15px;
-    top: auto; /* Reset top, aby bottom działało */
-}
-
 
 /* --- Ogólne style dla sekcji w main --- */
 section {
-    margin-bottom: 70px; /* Większe odstępy między "kartkami" */
-    padding: 35px;
-    background-color: rgba(255, 255, 255, 0.8); /* Lekko przezroczysty biały dla efektu papieru */
-    border: 3px dashed #7a614e; /* Przerywana brązowa ramka, jak przypięta kartka */
-    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.5), inset 0 0 10px rgba(0,0,0,0.1); /* Ciekawe cienie */
-    border-radius: 10px; /* Lekko zaokrąglone rogi */
-    position: relative;
-    transform: rotate(calc((var(--i, 0) - 0.5) * 1.5deg)); /* Delikatne, losowe pochylenie */
-    /* Zastosowanie zmiennej --i w HTML do nadania różnego obrotu, np. style="--i:1;" */
+    margin-bottom: 50px; /* Większe odstępy między sekcjami */
+    padding: 30px;
+    background-color: rgba(40, 0, 0, 0.5); /* Ciemniejsze tło sekcji */
+    border-left: 5px solid #990000; /* Gruba, krwista linia z boku */
+    border-right: 5px solid #990000;
+    box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.8); /* Wewnętrzny cień dla głębi */
+    border-radius: 8px; /* Zaokrąglone rogi sekcji */
 }
-
-/* Mini pinezka na każdej sekcji */
-section::before {
-    content: '';
-    position: absolute;
-    top: -10px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 20px;
-    height: 20px;
-    background-color: #b0c4de; /* Kolor metalowej pinezki */
-    border: 1px solid #778899;
-    border-radius: 50%;
-    box-shadow: inset 0 0 3px rgba(0,0,0,0.3);
-    z-index: 2;
-}
-
 
 section:last-of-type {
-    margin-bottom: 0;
+    margin-bottom: 0; /* Brak dolnego marginesu dla ostatniej sekcji */
 }
 
 section h2 {
-    font-family: 'Fondamento', cursive; /* Ozdobna czcionka dla nagłówków sekcji */
-    color: #4a3c2e; /* Ciemny brąz */
-    font-size: 3.2em;
-    text-transform: capitalize;
+    font-family: 'VT323', monospace; /* VT323 dla nagłówków sekcji */
+    color: #66ff66; /* Seledynowy kolor dla nagłówków sekcji */
+    font-size: 2.8em;
+    text-transform: uppercase;
     text-align: center;
-    margin-bottom: 30px;
-    text-shadow: 2px 2px #d2b48c; /* Jasnobrązowy cień */
-    border-bottom: 2px solid #a88d6c; /* Brązowa linia pod nagłówkiem */
-    padding-bottom: 10px;
+    margin-bottom: 25px;
+    text-shadow: 3px 3px #000000, 5px 5px #330000;
 }
 
 section p {
-    font-family: 'IM Fell Double Pica', serif;
-    font-size: 1.2em;
-    color: #3b2b1d; /* Bardzo ciemny brąz dla tekstu */
+    font-family: 'VT323', monospace; /* Pixelowa czcionka dla paragrafów */
+    font-size: 1.1em;
+    color: #cccccc;
     text-align: justify;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
 }
 
 /* --- Style dla elementów formulrza / interaktywnych --- */
-label, select, input[type="number"], input[type="text"], textarea {
+label, select, input[type="number"] {
     display: block;
-    margin: 20px auto;
-    font-size: 1.3em;
+    margin: 15px auto;
+    font-size: 1.2em; /* Dopasowana wielkość czcionki do VT323 */
     font-family: 'VT323', monospace;
-    color: #3b2b1d; /* Ciemny tekst */
-    background-color: #fdf5e6; /* Jasne tło inputów */
-    border: 2px solid #a88d6c; /* Brązowa ramka */
-    padding: 12px;
-    width: 70%;
-    max-width: 400px;
-    border-radius: 8px;
-    box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.2);
+    color: #e0e0e0; /* Jasny tekst */
+    background-color: #330000; /* Ciemnoczerwone tło dla inputów */
+    border: 2px solid #990000; /* Czerwona ramka */
+    padding: 10px;
+    width: 60%;
+    max-width: 250px;
+    border-radius: 5px;
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.5); /* Wewnętrzny cień */
 }
 
 select option {
-    background-color: #fdf5e6;
-    color: #3b2b1d;
+    background-color: #330000; /* Tło opcji w rozwijanej liście */
+    color: #e0e0e0;
 }
 
 button, input[type="submit"] {
-    font-family: 'VT323', monospace;
-    font-size: 1.6em;
-    background-color: #7a614e; /* Średni brąz */
-    color: #f7e6c4; /* Złoty/jasnobeżowy */
-    border: 2px solid #a88d6c;
-    padding: 18px 35px;
+    font-family: 'VT323', monospace; /* VT323 dla przycisków */
+    font-size: 1.5em; /* Większy rozmiar dla lepszej widoczności */
+    background-color: #660000; /* Ciemnoczerwony przycisk */
+    color: #ffdddd; /* Jasny tekst na przycisku */
+    border: 2px solid #ff3333; /* Jasnoczerwona ramka */
+    padding: 15px 30px;
     cursor: pointer;
-    margin-top: 30px;
-    transition: all 0.3s ease;
-    text-transform: uppercase;
-    box-shadow: 5px 5px 10px rgba(0,0,0,0.5);
-    border-radius: 10px;
+    margin-top: 20px;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    text-transform: uppercase; /* Wersaliki dla przycisku */
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
 }
 
 button:hover, input[type="submit"]:hover {
-    background-color: #a88d6c; /* Jaśniejszy brąz */
-    color: #fffacd;
-    transform: translateY(-2px) scale(1.03);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.6), 0 0 25px #f7e6c4;
+    background-color: #990000; /* Ciemniejszy czerwony przy najechaniu */
+    color: #66ff66; /* SELEDYNOWY KOLOR PRZY NAJECHANIU */
+    transform: scale(1.05); /* Lekkie powiększenie */
+    box-shadow: 0 0 20px #66ff66; /* SELEDYNOWY BLASK PRZY NAJECHANIU */
 }
 
 /* --- Stopka --- */
 footer {
     text-align: center;
-    padding: 30px;
-    background-color: #2e2319; /* Bardzo ciemny brąz */
-    color: #bfa88c; /* Zgaszony brązowy */
-    font-size: 1em;
-    border-top: 3px solid #4a3c2e;
-    margin-top: 70px;
-    box-shadow: inset 0 5px 15px rgba(0,0,0,0.7);
+    padding: 25px;
+    background-color: #200000; /* Bardzo ciemny odcień burgundu */
+    color: #808080; /* Zgaszony szary */
+    font-size: 0.9em;
+    border-top: 2px solid #4d0000; /* Ciemniejsza ramka */
+    margin-top: 50px; /* Zapewnia odstęp od głównej treści */
 }
 
 footer p {
     margin: 0;
-    font-family: 'IM Fell Double Pica', serif;
+    font-family: 'VT323', monospace; /* Pixelowa czcionka dla stopki */
 }
 
-/* --- Style dla list zadań / wpisów (quest-category, quest-entry) --- */
+/* --- Style dla list zadań (główne i poboczne) --- */
 .quest-category {
-    margin-bottom: 40px;
-    border: 2px solid #a88d6c; /* Brązowa ramka */
-    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.2);
-    padding: 25px;
-    background-color: rgba(240, 230, 210, 0.9); /* Bardzo jasny, prawie biały pergamin */
+    margin-bottom: 60px; /* Większe odstępy między kategoriami zadań */
+    border: 2px solid #660000; /* Krwista ramka dla całej kategorii */
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.8); /* Mroczny cień */
+    padding: 30px;
+    background-color: rgba(40, 0, 0, 0.6); /* Lekko ciemniejsze tło dla kategorii */
     border-radius: 8px;
 }
 
-.quest-category h3 { /* Zmieniono h2 na h3 dla kategorii, aby dopasować do struktury HTML */
-    font-family: 'Fondamento', cursive;
-    color: #4a3c2e;
+.quest-category h2 {
+    font-family: 'VT323', monospace; /* VT323 dla nagłówków kategorii zadań */
+    color: #ff9933; /* Rdzawo-pomarańczowy kolor dla nagłówków kategorii */
     font-size: 2.2em;
-    text-align: left;
-    margin-bottom: 25px;
-    border-bottom: 1px solid #a88d6c; /* Delikatna brązowa linia */
-    padding-bottom: 8px;
-    text-shadow: 1px 1px #d2b48c;
-}
-
-.quest-entry {
-    background-color: #fdf5e6; /* Najjaśniejszy kolor, jak pojedyncza kartka */
-    border: 1px solid #d2b48c; /* Delikatna ramka */
-    padding: 18px;
-    margin-bottom: 20px;
-    border-radius: 5px;
-    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
-    position: relative; /* Dla potencjalnych pinezek na wpisach */
-}
-
-.quest-entry:last-child {
-    margin-bottom: 0;
-}
-
-.quest-entry h3 {
-    font-family: 'IM Fell Double Pica', serif;
-    color: #6a5c4e; /* Średnio ciemny brąz */
-    font-size: 1.9em;
-    margin-top: 0;
-    margin-bottom: 12px;
-    text-shadow: none; /* Usuwamy cień dla nazwy wpisu */
-    border-bottom: 1px dashed #d2b48c; /* Przerywana linia pod nazwą */
-    padding-bottom: 5px;
-}
-
-.quest-entry p {
-    font-family: 'IM Fell Double Pica', serif;
-    font-size: 1.1em;
-    color: #3b2b1d;
-    margin-bottom: 8px;
-}
-
-.quest-entry strong {
-    color: #8b4513; /* Kolor ciemnego drewna/rdzy */
-}
-
-/* --- Style dla stanów wpisów (aktywne, zakończone, placeholder) --- */
-
-/* Style dla sekcji ZAKOŃCZONYCH zadań / postaci */
-.completed-quests .quest-entry {
-    opacity: 0.6; /* Przyciemnienie */
-    filter: grayscale(40%); /* Większe odcienie szarości */
-    border-color: #bfa88c; /* Zgaszony brąz */
-    background-color: #ede4d1; /* Lekko przyciemniony pergamin */
-    box-shadow: inset 0 0 5px rgba(0,0,0,0.1);
-}
-
-.completed-quests .quest-entry h3 {
-    text-decoration: line-through; /* Przekreślony tekst */
-    color: #8b4513; /* Zgaszony brąz */
-}
-
-/* Styl dla placeholderów / nieaktywnych / nowych wpisów */
-.placeholder-quest {
-    background-color: #f5f0e1; /* Jaśniejsze, czyste tło */
-    border-style: dashed;
-    border-color: #d2b48c;
-    opacity: 0.8;
-}
-
-/* --- Separator w main (linia) --- */
-hr {
-    border: none;
-    border-top: 3px dashed #7a614e; /* Przerywana linia w kolorze brązu */
-    margin: 60px auto;
-    width: 80%;
-}
-
-
-/* --- Style specyficzne dla Generatora Kości --- */
-.dice-roller-section {
-    /* Używa ogólnych stylów dla sekcji */
-}
-
-.container {
-    background-color: rgba(255, 255, 255, 0.9); /* Jasne tło dla kontenera kości */
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-    border: 2px solid #a88d6c;
-    max-width: 600px;
-    margin: auto;
-}
-
-.results-heading {
-    font-family: 'Fondamento', cursive;
-    font-size: 2.5em;
-    color: #4a3c2e;
-    margin-bottom: 25px;
-    text-shadow: 1px 1px #d2b48c;
-    border-bottom: 1px dashed #a88d6c;
+    text-align: left; /* Wyrównanie do lewej */
+    margin-bottom: 30px;
+    border-bottom: 2px dashed #990000; /* Przerywana krwista linia */
     padding-bottom: 10px;
 }
 
+.quest-entry {
+    background-color: rgba(50, 0, 0, 0.7); /* Tło dla pojedynczego zadania */
+    border: 1px solid #4d0000; /* Ciemniejsza ramka */
+    padding: 20px;
+    margin-bottom: 25px; /* Odstęp między zadaniami */
+    border-radius: 5px;
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.6); /* Wewnętrzny cień */
+}
+
+.quest-entry:last-child {
+    margin-bottom: 0; /* Brak marginesu dla ostatniego zadania w kategorii */
+}
+
+.quest-entry h3 {
+    font-family: 'VT323', monospace; /* VT323 dla nazw zadań */
+    color: #66ff66; /* SELEDYNOWY KOLOR DLA NAZW ZADAŃ */
+    font-size: 1.8em;
+    margin-top: 0;
+    margin-bottom: 15px;
+    text-shadow: 2px 2px #000000;
+}
+
+.quest-entry p {
+    font-family: 'VT323', monospace;
+    font-size: 1.1em;
+    color: #c0c0c0; /* Nieco ciemniejszy kolor tekstu dla szczegółów */
+    margin-bottom: 10px;
+}
+
+.quest-entry strong {
+    color: #ffcc66; /* Jasniejszy kolor dla pogrubionych etykiet */
+}
+
+/* Style dla aktywnych zadań (Main Quest) */
+.active-quests .quest-entry {
+    border-color: #66ff66; /* Seledynowa ramka */
+    box-shadow: 0 0 10px #66ff66, inset 0 0 5px #33cc33; /* Seledynowy blask */
+}
+
+/* Style dla zadań "W Trakcie" (Side Quests) */
+.in-progress-quests .quest-entry {
+    border-color: #66ff66; /* Seledynowa ramka */
+    box-shadow: 0 0 10px #66ff66, inset 0 0 5px #33cc33; /* Seledynowy blask */
+}
+
+/* Style dla zakończonych zadań */
+.completed-quests .quest-entry {
+    opacity: 0.7; /* Lekkie przyciemnienie */
+    filter: grayscale(20%); /* Lekkie odcienie szarości */
+    border-color: #800000; /* Bardziej zgaszony czerwony */
+}
+
+.completed-quests .quest-entry h3 {
+    text-decoration: line-through; /* Przekreślony tekst dla zakończonych zadań */
+    color: #999999; /* Zgaszony kolor nagłówka */
+}
+
+/* Styl dla placeholderów nieaktywnych / nowych zadań */
+.placeholder-quest {
+    background-color: rgba(30, 0, 0, 0.5); /* Ciemniejsze tło dla placeholderów */
+    border-style: dashed; /* Przerywana ramka */
+    border-color: #4d0000;
+}
+
+/* --- Style specyficzne dla Generatora Kości --- */
+.dice-roller-section {
+    padding: 30px;
+    /* Tło, ramki i cienie są już zdefiniowane w ogólnym .section */
+}
+
+.dice-roller-section h2 {
+    font-family: 'VT323', monospace; /* VT323 dla nagłówka sekcji generatora kości */
+    /* Reszta stylów dla h2 jest już zdefiniowana w ogólnym .section h2 */
+}
+
+.container { /* Ten kontener jest specyficzny dla strony z kośćmi */
+    background-color: rgba(20, 0, 0, 0.7); /* Dopasowane tło do głównego kontenera */
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.8); /* Mroczny cień */
+    border: 2px solid #660000; /* Ciemnoczerwona ramka */
+    max-width: 600px;
+    margin: auto; /* Centrowanie kontenera */
+}
+
+.results {
+    margin-top: 30px;
+    border-top: 2px dashed #990000; /* Przerywana krwista linia */
+    padding-top: 20px;
+}
+
+.results-heading { /* Klasa dla nagłówka wyników rzutów */
+    font-family: 'VT323', monospace; /* VT323 dla nagłówka wyników */
+    font-size: 2em;
+    color: #ff9933; /* Rdzawo-pomarańczowy */
+    margin-bottom: 20px;
+    text-shadow: 2px 2px #000000;
+}
+
 .result-item {
-    background-color: #fdf5e6;
-    padding: 12px;
+    background-color: rgba(30, 0, 0, 0.8); /* Ciemniejsze tło dla wyników */
+    padding: 10px;
     border-radius: 5px;
     margin-bottom: 10px;
-    border: 1px solid #d2b48c;
+    border: 1px solid #660000; /* Krwista ramka */
     display: flex;
     justify-content: space-between;
-    font-size: 1.5em;
-    color: #3b2b1d;
-    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.1);
+    font-size: 1.4em; /* Dopasowana wielkość czcionki */
+    color: #e0e0e0; /* Jasny tekst */
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.5); /* Wewnętrzny cień */
 }
 
 .total-result {
-    background-color: #e8dcb9; /* Kolor pergaminu */
-    border-color: #8b4513; /* Ciemniejszy brąz */
+    background-color: #4d0000; /* Bardziej wyraźne tło dla sumy */
+    border-color: #ff6600; /* Pomarańczowa ramka dla sumy */
     font-weight: bold;
-    color: #8b4513; /* Ciemny brąz dla sumy */
-    font-size: 1.8em;
-    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    color: #66ff66; /* SELEDYNOWY KOLOR DLA SUMY */
+    font-size: 1.6em; /* Większy rozmiar dla sumy */
+    box-shadow: 0 0 10px #ff6600; /* Pomarańczowy blask dla sumy */
 }
 
 /* --- Style specyficzne dla strony Prześlij Aktualizację --- */
 .submit-update-section {
-    /* Używa ogólnych stylów dla sekcji */
-    text-align: center;
+    padding: 30px;
+    background-color: rgba(40, 0, 0, 0.5); /* Ciemniejsze tło sekcji, jak w innych sekcjach */
+    border-left: 5px solid #990000; /* Gruba, krwista linia z boku */
+    border-right: 5px solid #990000;
+    box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.8); /* Wewnętrzny cień dla głębi */
+    border-radius: 8px;
+    margin-bottom: 50px;
+    text-align: center; /* Wyśrodkowanie tekstu */
+}
+
+.submit-update-section h2 {
+    font-family: 'VT323', monospace; /* VT323 dla nagłówka sekcji */
+    color: #66ff66; /* Seledynowy kolor */
+    font-size: 2.8em;
+    text-transform: uppercase;
+    margin-bottom: 25px;
+    text-shadow: 3px 3px #000000, 5px 5px #330000;
 }
 
 .submit-update-section p {
-    font-family: 'IM Fell Double Pica', serif;
-    font-size: 1.3em;
-    color: #3b2b1d;
-    margin-bottom: 40px;
-    max-width: 800px;
+    font-family: 'VT323', monospace;
+    font-size: 1.2em;
+    color: #cccccc;
+    margin-bottom: 30px;
+    max-width: 700px;
     margin-left: auto;
     margin-right: auto;
-    text-align: center;
+    text-align: center; /* Wyśrodkowanie tekstu p */
 }
 
 .form-container {
-    background-color: rgba(255, 255, 255, 0.9);
-    padding: 30px;
+    background-color: rgba(20, 0, 0, 0.7); /* Dopasowane tło do głównego kontenera, jak w generatorze kości */
+    padding: 20px; /* Zmniejsz padding, żeby formularz miał więcej miejsca */
     border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-    border: 2px solid #a88d6c;
-    width: 100%;
-    max-width: 900px;
-    margin: 0 auto;
-    box-sizing: border-box;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.8); /* Mroczny cień */
+    border: 2px solid #660000; /* Ciemnoczerwona ramka */
+    width: 100%; /* Rozciągnij na całą dostępną szerokość */
+    max-width: 800px; /* Maksymalna szerokość kontenera formularza */
+    margin: 0 auto; /* Centrowanie kontenera formularza */
+    box-sizing: border-box; /* Uwzględnij padding w szerokości */
 }
 
 iframe {
     width: 100%;
-    height: 800px;
-    border: none;
-    background-color: #fdf5e6; /* Tło iframe pasujące do pergaminu */
-    color: #3b2b1d; /* Kolor tekstu w iframe */
-    font-family: 'IM Fell Double Pica', serif;
+    height: 800px; /* Domyślna wysokość iframe */
+    border: none; /* Usuń domyślne obramowanie iframe */
+    background-color: #1a0a0a; /* Upewnij się, że tło iframe pasuje do tła strony */
+    color: #e0e0e0; /* Ustaw kolor tekstu w iframe, jeśli to możliwe (zależy od formularza) */
+    font-family: 'VT323', monospace; /* Spróbuj zastosować czcionkę, ale może nie zadziałać dla zewnętrznych formularzy */
 }
 
 /* --- Dodatkowe efekty / klasy --- */
 .pixel-art-image {
-    /* Zachowujemy style pixel-art, jeśli masz takie obrazy */
-    image-rendering: optimizeSpeed;
-    image-rendering: -moz-crisp-edges;
-    image-rendering: -o-crisp-edges;
-    image-rendering: -webkit-optimize-contrast;
+    /* Użyj tej klasy dla obrazów, które chcesz stylizować na pixel-art */
+    image-rendering: optimizeSpeed;             /* Huraaay */
+    image-rendering: -moz-crisp-edges;          /* Firefox */
+    image-rendering: -o-crisp-edges;            /* Opera */
+    image-rendering: -webkit-optimize-contrast; /* Webkit (non-standard) */
     image-rendering: crisp-edges;
-    -ms-interpolation-mode: nearest-neighbor;
-    filter: drop-shadow(0px 0px 5px rgba(0, 0, 0, 0.3)); /* Bardziej subtelny cień */
+    -ms-interpolation-mode: nearest-neighbor;   /* IE */
+    filter: drop-shadow(0px 0px 5px #ff0000); /* Delikatna czerwona poświata wokół obrazów */
 }
 
-/* --- Scrollbar (niestandardowy) --- */
+/* --- Scrollbar (niestandardowy, tylko dla przeglądarek wspierających) --- */
 ::-webkit-scrollbar {
-    width: 15px;
+    width: 12px;
 }
 
 ::-webkit-scrollbar-track {
-    background: #4a3c2e; /* Ciemny brąz */
-    border-left: 2px solid #7a614e;
+    background: #1a0a0a; /* Tło scrollbara */
+    border-left: 1px solid #330000;
 }
 
 ::-webkit-scrollbar-thumb {
-    background-color: #a88d6c; /* Jasniejszy brąz */
+    background-color: #660000; /* Kolor suwaka */
     border-radius: 10px;
-    border: 3px solid #7a614e;
+    border: 2px solid #990000;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background-color: #c0a880; /* Jaśniejszy brąz na hover */
+    background-color: #990000;
 }
 
-/* --- Responsywność dla mniejszych ekranów --- */
-@media (max-width: 900px) {
-    header h1 {
-        font-size: 3.5em;
-    }
-    nav ul {
-        gap: 20px;
-    }
+/* Responsywność dla mniejszych ekranów - globalne, lub specyficzne dla sekcji */
+@media (max-width: 768px) {
     main {
-        padding: 30px 20px;
-        margin: 30px auto;
-        border-width: 5px;
-    }
-    section {
-        padding: 25px;
-        margin-bottom: 40px;
-    }
-    section h2 {
-        font-size: 2.5em;
-    }
-    .quest-category {
         padding: 20px;
     }
-    .quest-category h3 {
-        font-size: 1.8em;
-    }
-    .quest-entry {
-        padding: 15px;
-    }
-    .quest-entry h3 {
-        font-size: 1.6em;
-    }
-    button, input[type="submit"] {
-        padding: 15px 25px;
-        font-size: 1.4em;
-    }
     iframe {
-        height: 600px;
+        height: 600px; /* Dalsze zmniejszenie wysokości na małych ekranach */
     }
-}
-
-@media (max-width: 600px) {
     header h1 {
-        font-size: 2.8em;
-        letter-spacing: 1px;
+        font-size: 2.5em; /* Zmniejsz rozmiar nagłówka na małych ekranach */
+        letter-spacing: 2px;
     }
     nav ul {
-        flex-direction: column;
+        flex-direction: column; /* Linki nawigacji w kolumnie na małych ekranach */
         gap: 10px;
     }
     nav ul li a {
-        font-size: 1.3em;
-        padding: 10px 15px;
-        width: 80%; /* Linki na całą szerokość */
-        margin: 0 auto;
-    }
-    main {
-        padding: 20px 15px;
-        margin: 20px auto;
-        border-width: 3px;
-    }
-    main::before, main::after, main::nth-of-type(2)::before, main::nth-of-type(2)::after {
-        width: 18px;
-        height: 18px;
-        top: 8px; /* Mniejsze pinezki, bliżej krawędzi */
-        left: 8px;
-    }
-    main::after { right: 8px; left: auto; }
-    main::nth-of-type(2)::before { bottom: 8px; top: auto; left: 8px;}
-    main::nth-of-type(2)::after { bottom: 8px; top: auto; right: 8px;}
-
-    section {
-        padding: 15px;
-        margin-bottom: 30px;
-    }
-    section::before { /* Pinezka na sekcji */
-        width: 15px;
-        height: 15px;
-        top: -7px;
+        font-size: 1.2em; /* Zmniejsz rozmiar linków nawigacji */
+        padding: 8px 12px;
     }
     section h2 {
         font-size: 2em;
     }
-    section p {
-        font-size: 1em;
+}
+
+/* Dodatkowe media queries dla bardzo małych ekranów (np. telefony pionowo) */
+@media (max-width: 480px) {
+    main {
+        padding: 15px;
+        margin: 20px auto;
     }
-    .quest-category {
+    section {
         padding: 15px;
     }
-    .quest-category h3 {
-        font-size: 1.6em;
-    }
     .quest-entry {
-        padding: 12px;
-    }
-    .quest-entry h3 {
-        font-size: 1.4em;
-    }
-    label, select, input[type="number"], input[type="text"], textarea {
-        width: 90%;
-        font-size: 1.1em;
-        padding: 10px;
+        padding: 15px;
     }
     button, input[type="submit"] {
-        font-size: 1.1em;
-        padding: 12px 20px;
+        font-size: 1.2em;
+        padding: 10px 20px;
     }
     .submit-update-section p {
-        font-size: 1.1em;
-    }
-    .results-heading {
-        font-size: 2em;
-    }
-    .result-item {
-        font-size: 1.2em;
-    }
-    .total-result {
-        font-size: 1.4em;
-    }
-    footer {
-        padding: 20px;
-        font-size: 0.8em;
+        font-size: 1em;
     }
 }
