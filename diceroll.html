@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generator Kości D&D - Gehenna & Doom</title>
+    <link rel="stylesheet" href="style.css">
+    </head>
+<body>
+    <header>
+        <h1>Generator Kości D&D</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Strona Główna</a></li>
+                <li><a href="characters-and-cemetery.html" >Postacie i Cmentarz</a></li>
+                <li><a href="main-quest.html">Główne Zadania</a></li>
+                <li><a href="side-quests.html">Zadania Poboczne</a></li>
+                <li><a href="diceroll.html"  class="active">Rzut Kośćmi</a></li>
+                <li><a href="submit-update.html">Prześlij Aktualizację</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="dice-roller-section">
+            <div class="container">
+                <h2>Rzuć Kośćmi!</h2>
+
+                <label for="diceType">Wybierz typ kości:</label>
+                <select id="diceType">
+                    <option value="4">K4</option>
+                    <option value="6">K6</option>
+                    <option value="8">K8</option>
+                    <option value="10">K10</option>
+                    <option value="12">K12</option>
+                    <option value="20">K20</option>
+                    <option value="100">K100</option>
+                </select>
+
+                <label for="numDice">Ilość kości:</label>
+                <input type="number" id="numDice" value="1" min="1" max="10">
+
+                <button onclick="rollDice()">Rzuć!</button>
+
+                <div class="results" id="results">
+                    <p>Tutaj pojawią się wyniki.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Moja Strona. Wszelkie prawa zastrzeżone.</p>
+    </footer>
+
+    <script>
+        function rollDice() {
+            const diceType = parseInt(document.getElementById('diceType').value);
+            const numDice = parseInt(document.getElementById('numDice').value);
+            const resultsDiv = document.getElementById('results');
+            resultsDiv.innerHTML = '<p class="results-heading">Wyniki rzutów:</p>'; // Zmieniono na p dla spójności ze stylami
+
+            if (isNaN(diceType) || isNaN(numDice) || numDice < 1 || numDice > 10) {
+                resultsDiv.innerHTML += '<p style="color: #ff6600;">Niepoprawne dane!</p>';
+                return;
+            }
+
+            let total = 0;
+            for (let i = 0; i < numDice; i++) {
+                const roll = Math.floor(Math.random() * diceType) + 1;
+                total += roll;
+                const item = document.createElement('div');
+                item.className = 'result-item';
+                item.textContent = `Rzut ${i+1}: ${roll} (K${diceType})`;
+                resultsDiv.appendChild(item);
+            }
+
+            if (numDice > 1) {
+                const totalItem = document.createElement('div');
+                totalItem.className = 'result-item total-result';
+                totalItem.textContent = `Suma: ${total}`;
+                resultsDiv.appendChild(totalItem);
+            }
+        }
+    </script>
+</body>
+</html>
